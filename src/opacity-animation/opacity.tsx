@@ -3,7 +3,9 @@ import { Animation } from '../animation/animation';
 
 export type OpacityAnimationProps = {
 	in: boolean;
+	duration?: number;
 	onComplete?: () => void;
+	className?: string;
 	children?: any;
 };
 
@@ -14,16 +16,18 @@ export const OpacityAnimation: React.SFC<OpacityAnimationProps> = (props) => {
 	];
 
 	const opacityOptions: AnimationEffectTiming = {
-		duration: 2000,
+		duration: props.duration || 300,
 		easing: 'ease-in-out',
 		direction: props.in ? 'normal' : 'reverse',
 		fill: 'forwards'
 	};
 
 	const animationProps = {
+		animationName: 'opacity-animation',
 		keyFrames: opacityKeyframes,
 		options: opacityOptions,
-		onFinish: props.onComplete
+		onFinish: props.onComplete,
+		className: props.className
 	};
 
 	return (

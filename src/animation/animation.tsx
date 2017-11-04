@@ -3,7 +3,9 @@ import * as React from 'react';
 export type AnimationProps = {
 	keyFrames: AnimationKeyFrame[];
 	options: AnimationEffectTiming;
+	animationName: string;
 	onFinish?: () => void;
+	className?: string;
 	children?: any;
 };
 
@@ -26,8 +28,11 @@ export class Animation extends React.Component<AnimationProps, {}> {
 	}
 
 	render () {
+		const props = this.props;
+		const classNames = `animation-block-wrapper ${props.className}`;
+
 		return (
-			<div className='animation-block-wrapper' ref={this.initializeAnimation}>
+			<div className={classNames} ref={this.initializeAnimation} data-name={props.animationName}>
 				{this.props.children}
 			</div>
 		);

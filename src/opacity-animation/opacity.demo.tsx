@@ -11,7 +11,7 @@ export class OpacityAnimationDemo extends React.Component<any, any> {
 	}
 
 	onComplete = () => {
-		alert(`Complete! ${this.state.isShowing ? 'in' : 'out'}`);
+		console.info(`Opacity Animation Complete: ${this.state.isShowing ? 'In' : 'Out'}`);
 	}
 
 	render () {
