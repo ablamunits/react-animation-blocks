@@ -25,6 +25,7 @@
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
+    "@types/web-animations-js": "^2.2.5",
     "awesome-typescript-loader": "^3.3.0",
     "open": "0.0.5",
     "source-map-loader": "^0.2.3",

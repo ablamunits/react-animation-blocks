@@ -10,11 +10,15 @@ export class OpacityAnimationDemo extends React.Component<any, any> {
 		this.setState({isShowing: !this.state.isShowing});
 	}
 
+	onComplete = () => {
+		alert(`Complete! ${this.state.isShowing ? 'in' : 'out'}`);
+	}
+
 	render () {
 		return (
 			<div>
 				<button onClick={this.toggleAnimation}>Toggle</button>
-				<OpacityAnimation in={this.state.isShowing}>
+				<OpacityAnimation in={this.state.isShowing} onComplete={this.onComplete}>
 					<div>Hello there</div>
 				</OpacityAnimation>
 			</div>
