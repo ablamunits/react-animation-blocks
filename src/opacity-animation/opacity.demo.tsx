@@ -11,15 +11,15 @@ export class OpacityAnimationDemo extends React.Component<any, any> {
 	}
 
 	onComplete = () => {
-		console.info(`Opacity Animation Complete: ${this.state.isShowing ? 'In' : 'Out'}`);
+		console.log(`Opacity Animation Complete: ${this.state.isShowing ? 'In' : 'Out'}`);
 	}
 
 	render () {
 		return (
-			<div>
+			<div className='opacity-animation-demo'>
 				<button onClick={this.toggleAnimation}>Toggle</button>
-				<OpacityAnimation in={this.state.isShowing} onComplete={this.onComplete}>
-					<div>Hello there</div>
+				<OpacityAnimation animateIn={this.state.isShowing} onComplete={this.onComplete}>
+					<div>Hi! This is an opacity example</div>
 				</OpacityAnimation>
 			</div>
 		);

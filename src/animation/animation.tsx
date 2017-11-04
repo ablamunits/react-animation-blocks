@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export type AnimationProps = {
+	animateIn: boolean;
 	keyFrames: AnimationKeyFrame[];
 	options: AnimationEffectTiming;
 	animationName: string;
@@ -19,9 +20,9 @@ export class Animation extends React.Component<AnimationProps, {}> {
 	}
 
 	componentWillReceiveProps (nextProps: AnimationProps) {
-		const {keyFrames, options} = nextProps;
+		const {keyFrames, options, animateIn} = nextProps;
 
-		if (this.animatedElement) {
+		if (this.animatedElement && animateIn !== this.props.animateIn) {
 			const ac = this.animatedElement.animate(keyFrames, options);
 			ac.onfinish = nextProps.onFinish;
 		}
