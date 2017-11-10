@@ -24,7 +24,7 @@ export class ScaleAnimationDemo extends React.Component<any, any> {
 		return (
 			<div className='opacity-animation-demo'>
 				<button onClick={this.toggleAnimation}>Toggle</button>
-				<ScaleAnimation animateIn={this.state.isShowing} onComplete={this.onComplete}>
+				<ScaleAnimation animateIn={this.state.isShowing} onFinish={this.onComplete}>
 					<div style={style}>Hi! This is a scale example</div>
 				</ScaleAnimation>
 			</div>

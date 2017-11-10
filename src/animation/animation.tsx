@@ -1,27 +1,44 @@
 import * as React from 'react';
 
-export type AnimationProps = {
-	animateIn: boolean;
-	keyFrames: AnimationKeyFrame[];
-	options: AnimationEffectTiming;
-	animationName: string;
+export type OptionalBaseAnimationProps = {
+	duration?: number;
 	onFinish?: () => void;
 	className?: string;
 	children?: any;
-	// wrapperStyle?: any;
 };
+
+export type BaseAnimationProps = {
+	animateIn: boolean;
+} & OptionalBaseAnimationProps;
+
+export type AnimationProps = {
+	animationName: string;
+	keyFrames: AnimationKeyFrame[];
+} & BaseAnimationProps;
 
 export class Animation extends React.Component<AnimationProps, {}> {
 	animatedElement: Element;
 
+	createAnimationOptions = (props: AnimationProps): AnimationEffectTiming => {
+		return {
+			duration: props.duration || 300,
+			easing: 'ease-in-out',
+			direction: props.animateIn ? 'normal' : 'reverse',
+			fill: 'forwards'
+		};
+	}
+
 	initializeAnimation = (e: HTMLElement) => {
 		this.animatedElement = e;
-		const ac = this.animatedElement.animate(this.props.keyFrames, this.props.options);
+		const options = this.createAnimationOptions(this.props);
+
+		const ac = this.animatedElement.animate(this.props.keyFrames, options);
 		ac.finish();
 	}
 
 	componentWillReceiveProps (nextProps: AnimationProps) {
-		const {keyFrames, options, animateIn} = nextProps;
+		const {keyFrames, animateIn} = nextProps;
+		const options = this.createAnimationOptions(nextProps);
 
 		if (this.animatedElement && animateIn !== this.props.animateIn) {
 			const ac = this.animatedElement.animate(keyFrames, options);

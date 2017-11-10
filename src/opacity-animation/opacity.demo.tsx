@@ -18,7 +18,7 @@ export class OpacityAnimationDemo extends React.Component<any, any> {
 		return (
 			<div className='opacity-animation-demo'>
 				<button onClick={this.toggleAnimation}>Toggle</button>
-				<OpacityAnimation animateIn={this.state.isShowing} onComplete={this.onComplete}>
+				<OpacityAnimation animateIn={this.state.isShowing} onFinish={this.onComplete}>
 					<div>Hi! This is an opacity example</div>
 				</OpacityAnimation>
 			</div>
