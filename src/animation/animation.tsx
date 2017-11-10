@@ -8,6 +8,7 @@ export type AnimationProps = {
 	onFinish?: () => void;
 	className?: string;
 	children?: any;
+	// wrapperStyle?: any;
 };
 
 export class Animation extends React.Component<AnimationProps, {}> {
@@ -30,12 +31,15 @@ export class Animation extends React.Component<AnimationProps, {}> {
 
 	render () {
 		const props = this.props;
-		const classNames = `animation-block-wrapper ${props.className}`;
+		const classNames = `animation-block-wrapper ${props.className || ''}`;
+		const wrapperStyle = {
+			display: 'inline-block'
+		};
 
 		return (
-			<div className={classNames} ref={this.initializeAnimation} data-name={props.animationName}>
+			<span style={wrapperStyle} className={classNames} ref={this.initializeAnimation} data-name={props.animationName}>
 				{this.props.children}
-			</div>
+			</span>
 		);
 	}
 }
