@@ -5,6 +5,7 @@ export type OptionalBaseAnimationProps = {
 	onFinish?: () => void;
 	className?: string;
 	children?: any;
+	style?: {[key: string]: any};
 };
 
 export type BaseAnimationProps = {
@@ -50,7 +51,8 @@ export class Animation extends React.Component<AnimationProps, {}> {
 		const props = this.props;
 		const classNames = `animation-block-wrapper ${props.className || ''}`;
 		const wrapperStyle = {
-			display: 'inline-block'
+			display: 'inline-block',
+			...props.style
 		};
 
 		return (

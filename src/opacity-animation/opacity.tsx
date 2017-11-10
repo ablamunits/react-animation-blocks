@@ -10,7 +10,7 @@ export const OpacityAnimation: React.SFC<OpacityAnimationProps> = (props) => {
 	];
 
 	return (
-		<Animation animationName='opacity-animation'keyFrames={opacityKeyframes} {...props}>
+		<Animation animationName='opacity-animation' keyFrames={opacityKeyframes} {...props}>
 			{props.children}
 		</Animation>
 	);
